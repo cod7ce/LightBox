@@ -24,10 +24,14 @@
 		width : 300,
 		height : 120,
 		effect : 'slow',
-		layout : 'center'
+		layout : 'center',
+		overlay : true ,
+		overlayBackground : 'black',
+		overlayOpacity : 0.2
 	};
 	$.fn.lightbox.title = "纸房子@WEB";
 	$.fn.lightbox.description = "欢迎使用cod7ce提供的lightbox插件！！！";
+	$.fn.lightbox.overlay = null;
 
 	/* 私有函数集 */
 	var methods = {
@@ -40,6 +44,21 @@
 				textAlign : 'left',
 				zIndex : '100'
 			});
+
+			if( opts.overlay && !$.fn.lightbox.overlay){
+				$.fn.lightbox.overlay = $('<div></div>').css({
+					position :'fixed',
+					background : opts.overlayBackground,
+					opacity : opts.overlayOpacity,
+					/* overlay 固定设置 */
+					top : 0,
+					left : 0,
+					width : '100%',
+					height : '100%',
+					zIndex : 99
+				}).attr('id','lightbox-overlay');
+				$(document.body).append( $.fn.lightbox.overlay )
+			}
 
 			/* 获取用户定义字段 */
 			$.fn.lightbox.title = this.attr('title');
