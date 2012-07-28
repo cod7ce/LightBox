@@ -20,6 +20,7 @@
 	$.fn.lightbox.defaults = {
 		background : 'white',
 		borderWidth : 3,
+		titleBorderColor : '#ddd',
 		width : 300,
 		height : 120,
 		effect : 'slow',
@@ -73,7 +74,7 @@
 				fontSize : 16,
 				borderWidth : '0 0 1px 0',
 				borderStyle : 'solid',
-				borderColor : '#ddd',
+				borderColor : opts.titleBorderColor,
 				width : '100%',
 				margin : '0 0 10px -10px'
 			});
