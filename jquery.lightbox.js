@@ -61,8 +61,8 @@
 			}
 
 			/* 获取用户定义字段 */
-			$.fn.lightbox.title = this.attr('title');
-			$.fn.lightbox.description = this.html();
+			$.fn.lightbox.title = $.trim(this.attr('title'))=='' ? $.fn.lightbox.title : this.attr('title');
+			$.fn.lightbox.description = $.trim(this.html())=='' ? $.fn.lightbox.description : this.html();
 			this.html('');
 
 			/* 边框节点对象,对外提供样式接口 */
@@ -100,7 +100,7 @@
 			boxObj.append( titleObj );
 
 			/* 内容节点对象 */
-			var contentObj = $('<div></div>').html( $.fn.lightbox.description );
+			var contentObj = $('<div></div>').css({ fontSize : '12px' }).html( $.fn.lightbox.description );
 			boxObj.append(contentObj);
 
 			/* 布局lightbox */
