@@ -19,7 +19,7 @@
 	/* 对象的默认值 */
 	$.fn.lightbox.defaults = {
 		background : 'white',
-		borderWidth : 5,
+		borderWidth : 3,
 		width : 300,
 		height : 120,
 		effect : 'slow',
