@@ -27,7 +27,15 @@
 		layout : 'center',
 		overlay : true ,
 		overlayBackground : 'black',
-		overlayOpacity : 0.2
+		overlayOpacity : 0.2,
+		confirm : {
+			name : "",
+			handle : function(){}
+		},
+		cancel : {
+			name : "",
+			handle : function(){}
+		}
 	};
 	$.fn.lightbox.title = "纸房子@WEB";
 	$.fn.lightbox.description = "欢迎使用cod7ce提供的lightbox插件！！！";
@@ -102,6 +110,15 @@
 			/* 内容节点对象 */
 			var contentObj = $('<div></div>').css({ fontSize : '12px' }).html( $.fn.lightbox.description );
 			boxObj.append(contentObj);
+
+			/* 按钮节点对象 */
+			if()
+			{
+
+			}
+			var btnObj = $('<div></div>').css({ textAlign : 'center' });
+
+			boxObj.append( btnObj );
 
 			/* 布局lightbox */
 			methods.layout.call(this, opts.layout);
