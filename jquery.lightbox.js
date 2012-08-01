@@ -127,10 +127,10 @@
 				});
 				btnObj.append(confirmBtnObj);
 			}
-			
-
-			boxObj.append( btnObj );
-
+			/* 当btnBox中没有添加confirm或cancle按键时，不添加在lightbox中 */
+			if(btnObj.children().length!=0){
+				boxObj.append( btnObj );
+			}
 			/* 布局lightbox */
 			methods.layout.call(this, opts.layout);
 			$(window).resize(function(){
