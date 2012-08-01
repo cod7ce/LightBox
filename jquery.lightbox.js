@@ -22,7 +22,6 @@
 		borderWidth : 3,
 		titleBorderColor : '#ddd',
 		width : 300,
-		height : 120,
 		effect : 'slow',
 		layout : 'center',
 		overlay : true ,
@@ -88,7 +87,6 @@
 			var boxObj = $('<div></div>').css({
 				padding : 10,
 				width : opts.width - 20,
-				height : opts.height -20,
 				color : '#333',
 				borderRadius : 4,
 				background : opts.background
@@ -112,11 +110,24 @@
 			boxObj.append(contentObj);
 
 			/* 按钮节点对象 */
-			if(true)
+			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '10px' });
+			if(opts.confirm.name != "")
 			{
-
+				var confirmBtnObj = $('<a href="#"></a>').css({
+					border : '1px solid #333',
+					background : 'green',
+					textDecoration : 'none',
+					color : 'white',
+					padding : '4px 20px',
+					borderRadius : '5px',
+					fontSize : 12
+				}).text(opts.confirm.name);
+				confirmBtnObj.click(function(){
+					opts.confirm.handle.call(this);
+				});
+				btnObj.append(confirmBtnObj);
 			}
-			var btnObj = $('<div></div>').css({ textAlign : 'center' });
+			
 
 			boxObj.append( btnObj );
 
