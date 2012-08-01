@@ -118,7 +118,8 @@
 					background : 'green',
 					textDecoration : 'none',
 					color : 'white',
-					padding : '1px 20px',
+					padding : '0px 20px',
+					margin : '0 3px 0 0',
 					borderRadius : '5px',
 					fontSize : 10
 				}).text(opts.confirm.name);
@@ -126,6 +127,23 @@
 					opts.confirm.handle.call(this);
 				});
 				btnObj.append(confirmBtnObj);
+			}
+			if(opts.cancel.name != "")
+			{
+				var cancelBtnObj = $('<a href="#"></a>').css({
+					border : '1px solid #333',
+					background : 'white',
+					textDecoration : 'none',
+					color : '#333',
+					padding : '0px 20px',
+					margin : '0 0 0 3px',
+					borderRadius : '5px',
+					fontSize : 10
+				}).text(opts.cancel.name);
+				cancelBtnObj.click(function(){
+					opts.cancel.handle.call(this);
+				});
+				btnObj.append(cancelBtnObj);
 			}
 			/* 当btnBox中没有添加confirm或cancle按键时，不添加在lightbox中 */
 			if(btnObj.children().length!=0){
