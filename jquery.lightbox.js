@@ -63,7 +63,9 @@
 					width : '100%',
 					height : '100%',
 					zIndex : 99
-				}).attr('id','lightbox-overlay');
+				}).attr('id','lightbox-overlay').click(function(){
+					methods.destroy.call($this);
+				});
 				$(document.body).append( $.fn.lightbox.overlay ).fadeIn();
 			}
 
