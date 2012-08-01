@@ -108,11 +108,11 @@
 			boxObj.append( titleObj );
 
 			/* 内容节点对象 */
-			var contentObj = $('<div></div>').css({ fontSize : '12px' }).html( $.fn.lightbox.description );
+			var contentObj = $('<div></div>').css({ fontSize : '12px', lineHeight:'18px' }).html( $.fn.lightbox.description );
 			boxObj.append(contentObj);
 
 			/* 按钮节点对象 */
-			if()
+			if(true)
 			{
 
 			}
