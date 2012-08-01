@@ -22,7 +22,7 @@
 		borderWidth : 3,
 		titleBorderColor : '#ddd',
 		width : 300,
-		effect : 'slow',
+		effect : 'none',
 		layout : 'center',
 		overlay : true ,
 		overlayBackground : 'black',
@@ -64,7 +64,7 @@
 					height : '100%',
 					zIndex : 99
 				}).attr('id','lightbox-overlay');
-				$(document.body).append( $.fn.lightbox.overlay )
+				$(document.body).append( $.fn.lightbox.overlay ).fadeIn();
 			}
 
 			/* 获取用户定义字段 */
@@ -106,11 +106,11 @@
 			boxObj.append( titleObj );
 
 			/* 内容节点对象 */
-			var contentObj = $('<div></div>').css({ fontSize : '12px', lineHeight:'18px' }).html( $.fn.lightbox.description );
+			var contentObj = $('<div></div>').css({ fontSize : '12px', lineHeight:'24px' }).html( $.fn.lightbox.description );
 			boxObj.append(contentObj);
 
 			/* 按钮节点对象 */
-			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '10px' });
+			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '20px' });
 			if(opts.confirm.name != "")
 			{
 				var confirmBtnObj = $('<a href="#"></a>').css({
@@ -118,9 +118,9 @@
 					background : 'green',
 					textDecoration : 'none',
 					color : 'white',
-					padding : '4px 20px',
+					padding : '1px 20px',
 					borderRadius : '5px',
-					fontSize : 12
+					fontSize : 10
 				}).text(opts.confirm.name);
 				confirmBtnObj.click(function(){
 					opts.confirm.handle.call(this);
@@ -137,7 +137,21 @@
 				methods.layout.call($this, opts.layout)
 			});
 
-			this.show(opts.effect);
+			methods.show.call(this, opts.effect);
+		},
+		/* lightbox弹出效果 */
+		show : function( effect ){
+			switch( effect ){
+				case 'none':
+					this.show();
+					break;
+				case 'flow':
+					this.show('slow');
+					break;
+				case 'fade':
+					this.fadeIn();
+					break;
+			}
 		},
 		/*
 			|ˉˉˉˉˉ|ˉˉˉˉˉˉ|ˉˉˉˉˉ|
