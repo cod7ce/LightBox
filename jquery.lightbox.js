@@ -127,6 +127,7 @@
 					if( opts.confirm.handle != undefined ){
 						opts.confirm.handle.call(this);
 					}
+					methods.destroy.call($this);
 				});
 				btnObj.append(confirmBtnObj);
 			}
@@ -146,6 +147,7 @@
 					if( opts.cancel.handle != undefined ){
 						opts.cancel.handle.call(this);
 					}
+					methods.destroy.call($this);
 				});
 				btnObj.append(cancelBtnObj);
 			}
@@ -159,7 +161,7 @@
 				methods.layout.call($this, opts.layout)
 			});
 
-			methods.show.call(this, opts.effect);
+			methods.show.call($this, opts.effect);
 		},
 		/* lightbox弹出效果 */
 		show : function( effect ){
@@ -174,6 +176,14 @@
 					this.fadeIn();
 					break;
 			}
+		},
+		/* lightbox的销毁 */
+		destroy : function( ){
+			$.fn.lightbox.overlay.remove();
+			$.fn.lightbox.overlay = null;
+			this.children().remove();
+			this.append($.fn.lightbox.description);
+			this.hide();
 		},
 		/*
 			|ˉˉˉˉˉ|ˉˉˉˉˉˉ|ˉˉˉˉˉ|
