@@ -112,17 +112,19 @@
 			boxObj.append(contentObj);
 
 			/* 按钮节点对象 */
-			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '20px' });
+			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '20px', marginBottom : '8px' });
 			if(opts.confirm.name != "")
 			{
 				var confirmBtnObj = $('<a href="#"></a>').css({
-					border : '1px solid #333',
-					background : 'green',
+					border : '1px solid #247600',
+					background : '#359600',
 					textDecoration : 'none',
+					textShadow : '0 0 1px #00634D',
 					color : 'white',
-					padding : '0px 20px',
+					padding : '5px 15px 6px',
 					margin : '0 3px 0 0',
 					borderRadius : '5px',
+					boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 #39A200',
 					fontSize : 10
 				}).text(opts.confirm.name);
 				confirmBtnObj.click(function(){
@@ -136,13 +138,15 @@
 			if(opts.cancel.name != "")
 			{
 				var cancelBtnObj = $('<a href="#"></a>').css({
-					border : '1px solid #333',
-					background : 'white',
+					border : '1px solid #bbb',
+					background : '#F9F9F9',
 					textDecoration : 'none',
+					textShadow : '0 0 1px #FEFEFE',
 					color : '#333',
-					padding : '0px 20px',
+					padding : '5px 15px 6px',
 					margin : '0 0 0 3px',
 					borderRadius : '5px',
+					boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 white',
 					fontSize : 10
 				}).text(opts.cancel.name);
 				cancelBtnObj.click(function(){
