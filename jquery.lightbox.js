@@ -29,11 +29,11 @@
 		overlayOpacity : 0.2,
 		confirm : {
 			name : "",
-			handle : function(){}
+			handle : undefined
 		},
 		cancel : {
 			name : "",
-			handle : function(){}
+			handle : undefined
 		}
 	};
 	$.fn.lightbox.title = "纸房子@WEB";
@@ -124,7 +124,9 @@
 					fontSize : 10
 				}).text(opts.confirm.name);
 				confirmBtnObj.click(function(){
-					opts.confirm.handle.call(this);
+					if( opts.confirm.handle != undefined ){
+						opts.confirm.handle.call(this);
+					}
 				});
 				btnObj.append(confirmBtnObj);
 			}
@@ -141,7 +143,9 @@
 					fontSize : 10
 				}).text(opts.cancel.name);
 				cancelBtnObj.click(function(){
-					opts.cancel.handle.call(this);
+					if( opts.cancel.handle != undefined ){
+						opts.cancel.handle.call(this);
+					}
 				});
 				btnObj.append(cancelBtnObj);
 			}
