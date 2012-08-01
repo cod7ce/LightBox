@@ -97,24 +97,27 @@
 			borderObj.append( boxObj );
 
 			/* 关闭按钮对象 */
-			var closeObj = $('<a href="#"></a>').css({
-				position : 'absolute',
-				top : 9,
-				right: 5,
-				display : 'block',
-				width : 16,
-				height : 16,
-				padding : 2,
-				textDecoration : 'none'
-			}).append($('<span>\u2716</span>').css({
-				lineHeight : '16px',
-				color : '#ccc'
-			}).mouseover(function(){$(this).css('color','#333');}).mouseout(function(){$(this).css('color','#ccc');
-			}));
-			closeObj.click(function(){
-				methods.destroy.call($this);
-			});
-			boxObj.append( closeObj );
+			if( opts.close ){
+				var closeObj = $('<a href="#"></a>').css({
+					position : 'absolute',
+					top : 9,
+					right: 5,
+					display : 'block',
+					width : 16,
+					height : 16,
+					padding : 2,
+					textDecoration : 'none'
+				}).append($('<span>\u2716</span>').css({
+					lineHeight : '16px',
+					color : '#ccc'
+				}).mouseover(function(){$(this).css('color','#333');}).mouseout(function(){$(this).css('color','#ccc');
+				}));
+				closeObj.click(function(){
+					methods.destroy.call($this);
+				});
+				boxObj.append( closeObj );
+			}
+			
 
 			/* 标题节点对象 */
 			var titleObj = $('<h2></h2>').text( $.fn.lightbox.title ).css({
