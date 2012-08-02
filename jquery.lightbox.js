@@ -28,18 +28,34 @@
 		overlayBackground : 'black',
 		overlayOpacity : 0.2,
 		close : true,
-		confirm : {
-			name : "",
-			handle : undefined
-		},
-		cancel : {
-			name : "",
-			handle : undefined
-		}
+		buttons : []
 	};
 	$.fn.lightbox.title = "纸房子@WEB";
 	$.fn.lightbox.description = "欢迎使用cod7ce提供的lightbox插件！！！";
 	$.fn.lightbox.overlay = null;
+	$.fn.lightbox.buttonstyle = [{
+		border : '1px solid #247600',
+		background : '#359600',
+		textDecoration : 'none',
+		textShadow : '0 0 1px #00634D',
+		color : 'white',
+		padding : '5px 15px 6px',
+		margin : '0 3px 0',
+		borderRadius : '5px',
+		boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 #39A200',
+		fontSize : 10
+	},{
+		border : '1px solid #bbb',
+		background : '#F9F9F9',
+		textDecoration : 'none',
+		textShadow : '0 0 1px #FEFEFE',
+		color : '#333',
+		padding : '5px 15px 6px',
+		margin : '0 3px 0',
+		borderRadius : '5px',
+		boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 white',
+		fontSize : 10
+	}];
 
 	/* 私有函数集 */
 	var methods = {
@@ -137,50 +153,18 @@
 
 			/* 按钮节点对象 */
 			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '20px', marginBottom : '8px' });
-			if(opts.confirm.name != "")
-			{
-				var confirmBtnObj = $('<a href="#"></a>').css({
-					border : '1px solid #247600',
-					background : '#359600',
-					textDecoration : 'none',
-					textShadow : '0 0 1px #00634D',
-					color : 'white',
-					padding : '5px 15px 6px',
-					margin : '0 3px 0 0',
-					borderRadius : '5px',
-					boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 #39A200',
-					fontSize : 10
-				}).text(opts.confirm.name);
-				confirmBtnObj.click(function(){
-					if( opts.confirm.handle != undefined ){
-						opts.confirm.handle.call(this);
-					}
-					methods.destroy.call($this);
-				});
-				btnObj.append(confirmBtnObj);
-			}
-			if(opts.cancel.name != "")
-			{
-				var cancelBtnObj = $('<a href="#"></a>').css({
-					border : '1px solid #bbb',
-					background : '#F9F9F9',
-					textDecoration : 'none',
-					textShadow : '0 0 1px #FEFEFE',
-					color : '#333',
-					padding : '5px 15px 6px',
-					margin : '0 0 0 3px',
-					borderRadius : '5px',
-					boxShadow : '0 1px 1px #E6E6E6,inset 0 1px 0 white',
-					fontSize : 10
-				}).text(opts.cancel.name);
-				cancelBtnObj.click(function(){
-					if( opts.cancel.handle != undefined ){
-						opts.cancel.handle.call(this);
-					}
-					methods.destroy.call($this);
-				});
-				btnObj.append(cancelBtnObj);
-			}
+			$.each(opts.buttons, function(name, button){
+				var btn = $('<a href="#"></a>').css(
+					$.fn.lightbox.buttonstyle[button.btype]
+				).text(button.text);
+				if( typeof(button.handle) == 'function'){
+					btn.bind('click',function(){
+						button.handle.call(this);
+						methods.destroy.call($this);
+					});
+				}
+				btnObj.append(btn);
+			});
 			/* 当btnBox中没有添加confirm或cancle按键时，不添加在lightbox中 */
 			if(btnObj.children().length!=0){
 				boxObj.append( btnObj );
