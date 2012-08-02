@@ -81,7 +81,7 @@
 					height : '100%',
 					zIndex : 99
 				}).attr('id','lightbox-overlay').click(function(){
-					methods.destroy.call($this);
+					methods.destroy.call($this, opts);
 				});
 				$(document.body).append( $.fn.lightbox.overlay ).fadeIn();
 			}
@@ -129,7 +129,7 @@
 				}).mouseover(function(){$(this).css('color','#333');}).mouseout(function(){$(this).css('color','#ccc');
 				}));
 				closeObj.click(function(){
-					methods.destroy.call($this);
+					methods.destroy.call($this, opts);
 				});
 				boxObj.append( closeObj );
 			}
@@ -160,7 +160,7 @@
 				if( typeof(button.handle) == 'function'){
 					btn.bind('click',function(){
 						button.handle.call(this);
-						methods.destroy.call($this);
+						methods.destroy.call($this, opts);
 					});
 				}
 				btnObj.append(btn);
@@ -192,9 +192,12 @@
 			}
 		},
 		/* lightbox的销毁 */
-		destroy : function( ){
-			$.fn.lightbox.overlay.remove();
-			$.fn.lightbox.overlay = null;
+		destroy : function(opts){
+			if( opts.overlay )
+			{
+				$.fn.lightbox.overlay.remove();
+				$.fn.lightbox.overlay = null;
+			}
 			this.children().remove();
 			this.append($.fn.lightbox.description);
 			this.hide();
