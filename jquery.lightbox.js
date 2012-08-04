@@ -173,6 +173,8 @@
 			methods.layout.call(this, opts.layout);
 			$(window).resize(function(){
 				methods.layout.call($this, opts.layout)
+			}).scroll(function(){
+				methods.layout.call($this, opts.layout)
 			});
 
 			methods.show.call($this, opts.effect);
@@ -216,32 +218,33 @@
 			var height    = $(window).height();
 			var boxWidth  = this.width();
 			var boxHeight = this.height();
+			var scrollTop = $(window).scrollTop();
 			switch( layout ){
 				case 'top':
 					var tleft = width > boxWidth ? (width - boxWidth ) / 2 : 0;
 					var ttop  = height/3 > boxHeight ? (height/3 - boxHeight)/2 : 0;
-					this.css({ top : ttop, left : tleft });
+					this.css({ top : ttop + scrollTop , left : tleft });
 					break;
 				case 'bottom':
 					var tleft = width > boxWidth ? (width - boxWidth ) / 2 : 0;
-					var tbottom  = height/3 > boxHeight ? (height/3 - boxHeight)/2 : 0;
-					this.css({ bottom : tbottom, left : tleft });
+					var ttop  = height/3 > boxHeight ? 2/3*height + (height/3 - boxHeight)/2 : height - boxHeight;
+					this.css({ top : ttop + scrollTop, left : tleft });
 					break;
 				case 'left':
 					var tleft = width/3 > boxWidth ? (width/3 - boxWidth ) / 2 : 0;
 					var ttop  = height > boxHeight ? (height - boxHeight)/2 : 0;
-					this.css({ top : ttop, left : tleft });
+					this.css({ top : ttop + scrollTop, left : tleft });
 					break;
 				case 'right':
 					var tright = width/3 > boxWidth ? (width/3 - boxWidth ) / 2 : 0;
 					var ttop  = height > boxHeight ? (height - boxHeight)/2 : 0;
-					this.css({ top : ttop, right : tright });
+					this.css({ top : ttop + scrollTop, right : tright });
 					break;
 				case 'center':
 				default:
 					var tleft = width > boxWidth ? (width - boxWidth ) / 2 : 0;
 					var ttop  = height > boxHeight ? (height - boxHeight)/2 : 0;
-					this.css({ top : ttop, left : tleft });
+					this.css({ top : ttop + scrollTop, left : tleft });
 					break;
 			}
 		}
