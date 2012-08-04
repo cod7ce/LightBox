@@ -83,7 +83,7 @@
 				}).attr('id','lightbox-overlay').click(function(){
 					methods.destroy.call($this, opts);
 				});
-				$(document.body).append( $.fn.lightbox.overlay ).fadeIn();
+				this.parent().append( $.fn.lightbox.overlay ).fadeIn();
 			}
 
 			/* 获取用户定义字段 */
