@@ -130,6 +130,7 @@
 				}));
 				closeObj.click(function(){
 					methods.destroy.call($this, opts);
+					return false;
 				});
 				boxObj.append( closeObj );
 			}
@@ -161,6 +162,7 @@
 					btn.bind('click',function(){
 						button.handle.call(this);
 						methods.destroy.call($this, opts);
+						return false;
 					});
 				}
 				btnObj.append(btn);
