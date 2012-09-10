@@ -205,6 +205,7 @@
 			}
 			this.children().remove();
 			this.append($.fn.lightbox.description);
+			this.attr('style','');
 			this.hide();
 		},
 		/*
