@@ -1,0 +1,223 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>LightBox Demo</title>
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.lightbox.js"></script>
+	<script type="text/javascript">
+		var options = "";
+		function CreateOptions()
+		{
+			options = "";
+			var numbet_patrn=/^[1-9]\d*$/;
+			var float_patrn=/^(0|0\.[0-9]|1|1\.0)$/;
+			if( $('#background').val() != "white" )
+			{
+				 options += ",background:'" + $('#background').val()+"'";
+			}
+			if( $('#width').val() != "300" )
+			{
+				if(!numbet_patrn.exec($('#width').val()))
+				{
+					alert("宽度应填写数字");
+					$('#width').val("300")
+				}
+				else
+				{
+					options += ",width:" + $('#width').val();
+				}
+			}
+			if( $('#borderwidth').val() != "3" )
+			{
+				if(!numbet_patrn.exec($('#borderwidth').val()))
+				{
+					alert("边框宽度应填写数字");
+					$('#borderwidth').val("3")
+				}
+				else
+				{
+					options += ",borderWidth:" + $('#borderwidth').val();
+				}
+			}
+			if( $('#bordercolor').val() != "transparent" )
+			{
+				 options += ",borderColor:'" + $('#bordercolor').val()+"'";
+			}
+			if( $('#titlebordercolor').val() != "#ddd" )
+			{
+				 options += ",titleBorderColor:'" + $('#titlebordercolor').val()+"'";
+			}
+			if( $('#effect').val() != "none" )
+			{
+				 options += ",effect:'" + $('#effect').val()+"'";
+			}
+			if( $('#layout').val() != "center" )
+			{
+				 options += ",layout:'" + $('#layout').val()+"'";
+			}
+			if( $('#overlay').val() != "true" )
+			{
+				options += ",overlay:" + $('#overlay').val()+"";
+			}
+			else
+			{
+				if( $('#overlaybackground').val() != "black" )
+				{
+					options += ",overlayBackground:'" + $('#overlaybackground').val()+"'";
+				}
+				if( $('#overlayopacity').val() != "0.2" )
+				{
+					if(!float_patrn.exec($('#overlayopacity').val()))
+					{
+						alert("透明度应该为0-1之间的小数,一位有效数字");
+						$('#overlayopacity').val('0.2');
+					}
+					else
+					{
+						options += ",overlayOpacity:" + $('#overlayopacity').val()+"";
+					}
+				}
+			}
+			if( $('#close').val() != "true" )
+			{
+				options += ",close:" + $('#close').val()+"";
+			}
+			options += ",buttons:[{text:'" + $('#btntext').val()+"',handle:" + $('#btnhandle').val() + ",btype:"+ $('#btnstyle').val() +"}]"; 
+			if(options != "")
+			{
+				options = "{" + options.substring(1,options.length) + "}";
+			}
+			$('#options').text("$('#id').lightbox("+options+");");
+			$('#seedemo').attr('onclick',"$('#lightbox').lightbox("+options+");");
+		}
+		$(document).ready(function(){
+			$('.change').change(function(){
+				CreateOptions();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<table>
+			<tr>
+				<th colspan="2"><p>LightBox&nbsp;&nbsp;配置选项</p></th>
+			</tr>
+			<tr>
+				<td class="label"><h3>基本属性</h3></td>
+				<td class="input"></td>
+			</tr>
+			<tr>
+				<td class="label">背景色</td>
+				<td class="input"><input class="change" id="background" type="text" value="white"/></td>
+			</tr>
+			<tr>
+				<td class="label">宽度</td>
+				<td class="input"><input class="change" id="width" type="text" value="300"/></td>
+			</tr>
+			<tr>
+				<td class="label">边框宽度</td>
+				<td class="input"><input class="change" id="borderwidth" type="text" value="3"/></td>
+			</tr>
+			<tr>
+				<td class="label">边框颜色</td>
+				<td class="input"><input class="change" id="bordercolor" type="text" value="transparent"/></td>
+			</tr>
+			<tr>
+				<td class="label">标题下方边框颜色</td>
+				<td class="input"><input class="change" id="titlebordercolor" type="text" value="#ddd"/></td>
+			</tr>
+			<tr>
+				<td class="label">弹出效果</td>
+				<td class="input">
+					<select id="effect" class="change">
+						<option value="none">无</option>
+						<option value="flow">展开</option>
+						<option value="fade">淡入</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">弹出位置</td>
+				<td class="input">
+					<select id="layout" class="change">
+						<option value="center">居中</option>
+						<option value="left">居左</option>
+						<option value="right">居右</option>
+						<option value="top">居上</option>
+						<option value="bottom">居下</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">是否显示透明层</td>
+				<td class="input">
+					<select id="overlay" class="change">
+						<option value="true">是</option>
+						<option value="false">否</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">透明层背景色</td>
+				<td class="input"><input class="change" id="overlaybackground" type="text" value="black"/></td>
+			</tr>
+			<tr>
+				<td class="label">透明层度</td>
+				<td class="input"><input class="change" id="overlayopacity" type="text" value="0.2"/></td>
+			</tr>
+			<tr>
+				<td class="label">是否显示关闭按钮</td>
+				<td class="input">
+					<select id="close" class="change">
+						<option value="true">是</option>
+						<option value="false">否</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label"><h3>按钮对象数组</h3></td>
+				<td class="input"></td>
+			</tr>
+			<tr>
+				<td class="label">按钮文字</td>
+				<td class="input">
+					<input class="change" id="btntext" type="text" value="确定"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">按钮捆包函数</td>
+				<td class="input">
+					<input class="change" id="btnhandle" type="text" value="function(){alert(1);}"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">按钮样式</td>
+				<td class="input">
+					<select id="btnstyle" class="change">
+						<option value="0">绿色</option>
+						<option value="1">灰色</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><span style="color:red;font-size:10px;">buttons对应类型为数组，可以添加多个按钮</span></td>
+			</tr>
+			<tr>
+				<td class="label">代码样式</td>
+				<td class="input" style="text-align:right;"><input type="button" id="seedemo" value="点击查看LightBox效果" onclick="$('#lightbox').lightbox({buttons:[{text:'确定',handle:function(){alert(1);},btype:0}]});"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+<textarea id="options" style="width:600px;height:100px;text-align:left;line-height: 25px;letter-spacing:1px;" readonly="true">
+$('#id').lightbox({buttons:[{text:'确定',handle:function()(alert(1);),btype:0}]});
+</textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="lightbox" style="display:none;">
+	</div>
+</body>
+</html>

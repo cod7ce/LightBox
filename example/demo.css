@@ -1,0 +1,35 @@
+input,textarea,select,pre{
+	border-color: #DFDFDF;
+	background-color: white;
+	color: #333;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+	margin: 1px;
+	padding: 5px;
+	outline: 0;
+	line-height: 15px;
+	width: 450;
+}
+input:hover,textarea:hover,select:hover{
+	border-color:#bbb;
+}
+input[type="button"]{
+	border-color: #13455B;
+	color: #EAF2FA;
+	background: #21759B;
+	text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
+	font-weight: bold;
+	cursor: pointer;
+	width:auto;
+	padding:3px 10px;
+}
+input[type="button"]:hover{
+	color:#fff;
+}
+.wrap{width:600px;margin:20px auto;}
+.label{width:150px;color:#333;font-size: 12px;}
+.input{}
+tr{height:40px;}
+p{margin:10px 0 25px 0;}
