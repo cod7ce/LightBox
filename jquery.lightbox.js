@@ -20,6 +20,7 @@
 	$.fn.lightbox.defaults = {
 		background : 'white',
 		borderWidth : 3,
+		borderColor : 'transparent',
 		titleBorderColor : '#ddd',
 		width : 300,
 		effect : 'none',
@@ -97,7 +98,7 @@
 				borderRadius:5,
 				boxShadow:'0 0 18px rgba(0, 0, 0, 0.4)',
 				borderStyle : 'solid',
-				borderColor : 'transparent',
+				borderColor : opts.borderColor,
 				borderWidth : opts.borderWidth
 			}).attr('class','popup');
 			this.append( borderObj );
