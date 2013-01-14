@@ -103,16 +103,6 @@
 			}).attr('class','popup');
 			this.append( borderObj );
 
-			/* box展示节点对象,对外提供样式接口  */
-			var boxObj = $('<div></div>').css({
-				padding : 10,
-				width : opts.width - 20,
-				color : '#333',
-				borderRadius : 4,
-				background : opts.background
-			}).attr('class','boxcontent');
-			borderObj.append( boxObj );
-
 			/* 关闭按钮对象 */
 			if( opts.close ){
 				var closeObj = $('<a href="#"></a>').css({
@@ -133,9 +123,18 @@
 					methods.destroy.call($this, opts);
 					return false;
 				});
-				boxObj.append( closeObj );
+				borderObj.append( closeObj );
 			}
 			
+			/* box展示节点对象,对外提供样式接口  */
+			var boxObj = $('<div></div>').css({
+				padding : 10,
+				width : opts.width - 20,
+				color : '#333',
+				borderRadius : 4,
+				background : opts.background
+			}).attr('class','boxcontent');
+			borderObj.append( boxObj );
 
 			/* 标题节点对象 */
 			var titleObj = $('<h2></h2>').text( $.fn.lightbox.title ).css({
