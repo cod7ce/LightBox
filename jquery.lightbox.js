@@ -155,14 +155,16 @@
 
 			/* 按钮节点对象 */
 			var btnObj = $('<div></div>').css({ textAlign : 'center', marginTop : '20px', marginBottom : '8px' });
-			$.each(opts.buttons, function(name, button){
+			$.each(opts.buttons, function(index, button){
 				var btn = $('<a href="#"></a>').css(
 					$.fn.lightbox.buttonstyle[button.btype]
-				).text(button.text);
+				).text(button.text).attr( 'id','lb_btn_'+index );
 				if( typeof(button.handle) == 'function'){
 					btn.bind('click',function(){
-						button.handle.call(this);
-						methods.destroy.call($this, opts);
+						if( $(this).attr('disabled') != 'disabled' ){
+							button.handle.call(this);
+							methods.destroy.call($this, opts);
+						}
 						return false;
 					});
 				}
