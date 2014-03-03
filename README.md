@@ -29,5 +29,5 @@ LightBox是大楠在找插件未遂，自己编写的一款开源的轻量级jqu
  - lightbox is a one of jquery plugins, it can popup a simple box in your web site.
  - open example/demo.html to create lightbox options param.
 
- [0]: http://zhifangzi.com/lightbox.html
- [1]: http://jsfiddle.net/cod7ce/n9xH4/4/embedded/result/
+ [0]: http://old.zhifangzi.com/lightbox.html
+ [1]: http://jsfiddle.net/cod7ce/n9xH4/embedded/result/
